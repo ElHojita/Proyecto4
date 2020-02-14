@@ -7,10 +7,10 @@ var mesNacimiento = prompt("Ingrese el mes de nacimiento", "Ejemplo: Si nació e
 var anioNacimiento = prompt("Ingrese el año de nacimiento", "Ejemplo: Si nació el 22 de enero de 1987, solamente ingresar 1987");
 if(Calculoedad(diaNacimiento+','+mesNacimiento+','+anioNacimiento)==true){ //If mayoria de edad
 var conyuge = prompt("¿Tiene cónyuge?", "SI/NO");
-var hijos = prompt("¿Tiene hijos?", "SI/NO");
 conyuge =conyuge.toLowerCase();
+if(conyuge=='si')
+var hijos = prompt("¿Tiene hijos?", "SI/NO");
 hijos =hijos.toLowerCase();
-document.write(hijos);
 if(hijos=='si')
 var cantidadHijos = prompt("Ingrese la cantidad de hijos menores de 21 años:", "Por favor ingrese únicamente números");
 }//If mayoria de edad
