@@ -5,10 +5,17 @@ var nombreCompleto = prompt("Por favor ingrese el nombre completo:", "Nombres y 
 var diaNacimiento = prompt("Ingrese el día de nacimiento", "Ejemplo: Si nació el 22 de enero, solamente ingresar 22");
 var mesNacimiento = prompt("Ingrese el mes de nacimiento", "Ejemplo: Si nació en enero, solamente ingresar 1 porque es el mes 1");
 var anioNacimiento = prompt("Ingrese el año de nacimiento", "Ejemplo: Si nació el 22 de enero de 1987, solamente ingresar 1987");
+
 if(Calculoedad(diaNacimiento+','+mesNacimiento+','+anioNacimiento)==true){ //If mayoria de edad
 var conyuge = prompt("¿Tiene cónyuge?", "SI/NO");
 conyuge =conyuge.toLowerCase();
 if(conyuge=='si')
+{
+  var diaNacimientoConyuge = prompt("Ingrese el día de nacimiento del conyuge", "Ejemplo: Si nació el 22 de enero, solamente ingresar 22");
+  var mesNacimientoConyuge = prompt("Ingrese el mes de nacimiento del conyuge", "Ejemplo: Si nació en enero, solamente ingresar 1 porque es el mes 1");
+  var anioNacimientoConyuge = prompt("Ingrese el año de nacimiento del conyuge", "Ejemplo: Si nació el 22 de enero de 1987, solamente ingresar 1987");
+}
+
 var hijos = prompt("¿Tiene hijos?", "SI/NO");
 hijos =hijos.toLowerCase();
 if(hijos=='si')
@@ -27,12 +34,18 @@ else{
 
 
 
-
+function edad(edad){
+  var Arrayedad =edad.split(','), anios;
+ anios= (parseInt(fechahoy[2], 10) -  parseInt(Arrayedad[2], 10))
+return anios;
+}
 
 
 
 function Calculoedad(edad) //funcion para validar si es mayor de edad o no lo es
- {
+ 
+
+{
    var bandera=false;
    //edad='12,1,2002';
    fechadenacimiento=edad.split(',');
@@ -56,7 +69,42 @@ function Calculoedad(edad) //funcion para validar si es mayor de edad o no lo es
    return bandera;
  }
 
+function Validacionrecargos(edad,estatus)
+{
+ var recargo =0;
+  if(estatus =='Asegurado')
+  {
+ if(edad >21 && edad <25)
+ recargo= 0.01;
 
+ if(edad >25 && edad <30)
+ recargo= 0.02;
+
+ if(edad >30 && edad <40)
+ recargo= 0.05;
+
+ if(edad >40 && edad <50)
+ recargo= 0.08;
+ if(edad >50 && edad <65)
+ recargo= 0.12;
+  }
+  if(estatus =='Conyuge')
+  {
+    if( edad <30)
+    recargo= 0.02;
+   
+    if(edad >=30 && edad <40)
+    recargo= 0.03;
+   
+    if(edad >=40 && edad <50)
+    recargo= 0.05;
+   
+    if(edad >=50 && edad <70)
+    recargo= 0.05;
+   
+  }
+return recargo;
+}
 
 
 //document.write(Calculoedad());
