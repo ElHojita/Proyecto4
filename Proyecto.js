@@ -1,4 +1,5 @@
-var fechadenacimiento='',fechahoy,varmes, d = new Date();
+var fechadenacimiento='',fechahoy,varmes, d = new Date(),recargo=0, recargoconyuge=0;
+// @ts-ignore
 varmes=parseInt(d.getMonth())+1; //Obtiene el valor del mes actual restandole uno, ejemplo febrero (2), lo toma como enero (1), por tanto se le suma uno 
 fechahoy=(d.getDate()+','+varmes.toString()+','+d.getFullYear()).split(',');
 var nombreCompleto = prompt("Por favor ingrese el nombre completo:", "Nombres y apellidos");
@@ -6,7 +7,19 @@ var diaNacimiento = prompt("Ingrese el día de nacimiento", "Ejemplo: Si nació 
 var mesNacimiento = prompt("Ingrese el mes de nacimiento", "Ejemplo: Si nació en enero, solamente ingresar 1 porque es el mes 1");
 var anioNacimiento = prompt("Ingrese el año de nacimiento", "Ejemplo: Si nació el 22 de enero de 1987, solamente ingresar 1987");
 
+
+
+
 if(Calculoedad(diaNacimiento+','+mesNacimiento+','+anioNacimiento)==true){ //If mayoria de edad
+
+  if(edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento) <22)
+  recargo= 0;
+ 
+
+
+
+
+ 
 var conyuge = prompt("¿Tiene cónyuge?", "SI/NO");
 conyuge =conyuge.toLowerCase();
 if(conyuge=='si')
@@ -20,6 +33,14 @@ var hijos = prompt("¿Tiene hijos?", "SI/NO");
 hijos =hijos.toLowerCase();
 if(hijos=='si')
 var cantidadHijos = prompt("Ingrese la cantidad de hijos menores de 21 años:", "Por favor ingrese únicamente números");
+
+Validacionrecargos(edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento), 'Asegurado');
+
+Validacionrecargos(edad(diaNacimientoConyuge+','+mesNacimientoConyuge+','+anioNacimientoConyuge), 'Conyuge');
+
+document.write((recargo*100).toString());
+document.write(edad(diaNacimientoConyuge+','+mesNacimientoConyuge+','+anioNacimientoConyuge).toString());
+
 }//If mayoria de edad
 else{
   alert('No cumple los requisitos de edad');
@@ -87,23 +108,25 @@ function Validacionrecargos(edad,estatus)
  recargo= 0.08;
  if(edad >50 && edad <65)
  recargo= 0.12;
-  }
+ return recargo ;  
+}
   if(estatus =='Conyuge')
   {
     if( edad <30)
-    recargo= 0.02;
+    recargoconyuge= 0.02;
    
     if(edad >=30 && edad <40)
-    recargo= 0.03;
+    recargoconyuge= 0.03;
    
     if(edad >=40 && edad <50)
-    recargo= 0.05;
+    recargoconyuge= 0.05;
    
     if(edad >=50 && edad <70)
-    recargo= 0.05;
-   
+    recargoconyuge= 0.05;
+
+    return recargoconyuge ;
   }
-return recargo;
+
 }
 
 
