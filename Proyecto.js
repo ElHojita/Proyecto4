@@ -1,4 +1,4 @@
-var fechadenacimiento,fechahoy,varmes, d = new Date();
+var fechadenacimiento='',fechahoy,varmes, d = new Date();
 varmes=parseInt(d.getMonth())+1; //Obtiene el valor del mes actual restandole uno, ejemplo febrero (2), lo toma como enero (1), por tanto se le suma uno 
 fechahoy=(d.getDate()+','+varmes.toString()+','+d.getFullYear()).split(',');
 var nombreCompleto = prompt("Por favor ingrese el nombre completo:", "Nombres y apellidos");
