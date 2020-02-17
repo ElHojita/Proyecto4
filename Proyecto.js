@@ -1,4 +1,4 @@
-var fechadenacimiento='',fechahoy,  varmes , d = new Date(),recargo=0, recargoconyuge=0;
+var fechadenacimiento='',fechahoy,  varmes , d = new Date(),recargo=0, recargoconyuge=0,recargohijos=1;
 
 varmes=parseInt(d.getMonth())+1; //Obtiene el valor del mes actual restandole uno, ejemplo febrero (2), lo toma como enero (1), por tanto se le suma uno 
 fechahoy=(d.getDate()+','+varmes.toString()+','+d.getFullYear()).split(',');
@@ -8,15 +8,15 @@ var mesNacimiento = prompt("Ingrese el mes de nacimiento", "Ejemplo: Si nació e
 var anioNacimiento = prompt("Ingrese el año de nacimiento", "Ejemplo: Si nació el 22 de enero de 1987, solamente ingresar 1987");
 
 
-document.write(d.getDate()+','+varmes.toString()+','+d.getFullYear());
-document.write((d.getMonth()).toString());
 
 //if(Calculoedad(diaNacimiento+','+mesNacimiento+','+anioNacimiento)==true){ //If mayoria de edad
 
-  if(edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento)>17){ //If mayoria de edad
+if(edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento)>17){ //If mayoria de edad
 
-  if(edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento) <22)
-  recargo= 0;
+  if(edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento) <22){
+    recargo= 0;
+  }
+  
  
 
 
@@ -38,14 +38,22 @@ hijos =hijos.toLowerCase();
 if(hijos=='si'){
 
 var cantidadHijos = prompt("Ingrese la cantidad de hijos menores de 21 años:", "Por favor ingrese únicamente números");
-  
+  recargohijos= recargohijos*parseInt(cantidadHijos) ;
 }
+
 Validacionrecargos(edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento), 'Asegurado');
 
 Validacionrecargos(edad(diaNacimientoConyuge+','+mesNacimientoConyuge+','+anioNacimientoConyuge), 'Conyuge');
 
-document.write((recargo*100).toString());
-document.write(edad(diaNacimientoConyuge+','+mesNacimientoConyuge+','+anioNacimientoConyuge).toString());
+
+
+
+document.write('<center>'+nombreCompleto);
+
+document.write('<br><center>Recargo del asegurado '+recargo.toString()+' %' );
+document.write('<br><center>Recargo por los conyuges '+recargoconyuge.toString()+' %' );
+document.write('<br><center>Recargos por hijos menores de 21 años '+recargohijos.toString()+' %' );
+//d//ocument.write(edad(diaNacimientoConyuge+','+mesNacimientoConyuge+','+anioNacimientoConyuge).toString());
 
 }//If mayoria de edad
 else{
@@ -100,37 +108,37 @@ function Calculoedad(edad) //funcion para validar si es mayor de edad o no lo es
 
 function Validacionrecargos(edad,estatus)
 {
- var recargo =0;
+ 
   if(estatus =='Asegurado')
   {
  if(edad >21 && edad <25)
- recargo= 0.01;
+ recargo= 1;
 
  if(edad >25 && edad <30)
- recargo= 0.02;
+ recargo= 2;
 
  if(edad >30 && edad <40)
- recargo= 0.05;
+ recargo= 5;
 
  if(edad >40 && edad <50)
- recargo= 0.08;
+ recargo= 8;
  if(edad >50 && edad <65)
- recargo= 0.12;
+ recargo= 12;
  return recargo ;  
 }
   if(estatus =='Conyuge')
   {
     if( edad <30)
-    recargoconyuge= 0.02;
+    recargoconyuge= 1;
    
     if(edad >=30 && edad <40)
-    recargoconyuge= 0.03;
+    recargoconyuge= 2;
    
     if(edad >=40 && edad <50)
-    recargoconyuge= 0.05;
+    recargoconyuge= 3;
    
     if(edad >=50 && edad <70)
-    recargoconyuge= 0.05;
+    recargoconyuge= 5;
 
     return recargoconyuge ;
   }
