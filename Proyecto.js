@@ -40,6 +40,9 @@ if(hijos=='si'){
 var cantidadHijos = prompt("Ingrese la cantidad de hijos menores de 21 años:", "Por favor ingrese únicamente números");
   recargohijos= recargohijos*parseInt(cantidadHijos) ;
 }
+else{
+  recargohijos= 0;
+}
 
 Validacionrecargos(edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento), 'Asegurado');
 
@@ -50,7 +53,7 @@ Validacionrecargos(edad(diaNacimientoConyuge+','+mesNacimientoConyuge+','+anioNa
 
 document.write('<center>'+nombreCompleto);
 
-document.write('<br><center>Recargo del asegurado '+recargo.toString()+' %' );
+document.write('<br><center>Recargo del asegurado '+recargo.toString()+' % ' + edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento));
 document.write('<br><center>Recargo por los conyuges '+recargoconyuge.toString()+' %' );
 document.write('<br><center>Recargos por hijos menores de 21 años '+recargohijos.toString()+' %' );
 //d//ocument.write(edad(diaNacimientoConyuge+','+mesNacimientoConyuge+','+anioNacimientoConyuge).toString());
@@ -117,12 +120,12 @@ function Validacionrecargos(edad,estatus)
  if(edad >25 && edad <30)
  recargo= 2;
 
- if(edad >30 && edad <40)
+ if(edad >29 && edad <40)
  recargo= 5;
 
- if(edad >40 && edad <50)
+ if(edad >39 && edad <50)
  recargo= 8;
- if(edad >50 && edad <65)
+ if(edad >49 && edad <65)
  recargo= 12;
  return recargo ;  
 }
