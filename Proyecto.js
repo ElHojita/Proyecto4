@@ -53,7 +53,7 @@ Validacionrecargos(edad(diaNacimientoConyuge+','+mesNacimientoConyuge+','+anioNa
 
 document.write('<center>'+nombreCompleto);
 
-document.write('<br><center>Recargo del asegurado '+recargo.toString()+' % ' + edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento));
+document.write('<br><center>Recargo del asegurado '+recargo.toString()+' % ');
 document.write('<br><center>Recargo por los conyuges '+recargoconyuge.toString()+' %' );
 document.write('<br><center>Recargos por hijos menores de 21 años '+recargohijos.toString()+' %' );
 //d//ocument.write(edad(diaNacimientoConyuge+','+mesNacimientoConyuge+','+anioNacimientoConyuge).toString());
