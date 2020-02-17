@@ -1,5 +1,5 @@
-var fechadenacimiento='',fechahoy,varmes, d = new Date(),recargo=0, recargoconyuge=0;
-// @ts-ignore
+var fechadenacimiento='',fechahoy,  varmes , d = new Date(),recargo=0, recargoconyuge=0;
+
 varmes=parseInt(d.getMonth())+1; //Obtiene el valor del mes actual restandole uno, ejemplo febrero (2), lo toma como enero (1), por tanto se le suma uno 
 fechahoy=(d.getDate()+','+varmes.toString()+','+d.getFullYear()).split(',');
 var nombreCompleto = prompt("Por favor ingrese el nombre completo:", "Nombres y apellidos");
@@ -8,9 +8,12 @@ var mesNacimiento = prompt("Ingrese el mes de nacimiento", "Ejemplo: Si nació e
 var anioNacimiento = prompt("Ingrese el año de nacimiento", "Ejemplo: Si nació el 22 de enero de 1987, solamente ingresar 1987");
 
 
+document.write(d.getDate()+','+varmes.toString()+','+d.getFullYear());
+document.write((d.getMonth()).toString());
 
+//if(Calculoedad(diaNacimiento+','+mesNacimiento+','+anioNacimiento)==true){ //If mayoria de edad
 
-if(Calculoedad(diaNacimiento+','+mesNacimiento+','+anioNacimiento)==true){ //If mayoria de edad
+  if(edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento)>17){ //If mayoria de edad
 
   if(edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento) <22)
   recargo= 0;
@@ -31,9 +34,12 @@ if(conyuge=='si')
 
 var hijos = prompt("¿Tiene hijos?", "SI/NO");
 hijos =hijos.toLowerCase();
-if(hijos=='si')
-var cantidadHijos = prompt("Ingrese la cantidad de hijos menores de 21 años:", "Por favor ingrese únicamente números");
 
+if(hijos=='si'){
+
+var cantidadHijos = prompt("Ingrese la cantidad de hijos menores de 21 años:", "Por favor ingrese únicamente números");
+  
+}
 Validacionrecargos(edad(diaNacimiento+','+mesNacimiento+','+anioNacimiento), 'Asegurado');
 
 Validacionrecargos(edad(diaNacimientoConyuge+','+mesNacimientoConyuge+','+anioNacimientoConyuge), 'Conyuge');
@@ -45,6 +51,8 @@ document.write(edad(diaNacimientoConyuge+','+mesNacimientoConyuge+','+anioNacimi
 else{
   alert('No cumple los requisitos de edad');
 }
+
+
 
 
 
